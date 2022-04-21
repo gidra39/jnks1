@@ -1,11 +1,10 @@
 pipeline {
-  agent {
-    docker {image 'apppy'}
-  }
+  agent any
   stages {
-    stage('Test'){
+    stage('Docker version'){
       steps{
-      sh 'node --version'
+      sh 'echo $USER'
+      sh 'docker version'
        }
      }
    }
