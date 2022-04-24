@@ -1,6 +1,7 @@
 pipeline {
   agent {
           label 'ubuntu-s'
+  }
   stages {
     stage('Docker version'){
       steps{
