@@ -4,7 +4,7 @@ pipeline {
     stage('Docker version'){
       steps{
       sh 'echo $USER'
-      sh 'docker version'
+      sh 'sudo docker version'
        }
      }
    }
