@@ -27,6 +27,11 @@ pipeline {
      }
     stage('Cleanup'){
       steps {
+        sh 'echo 12345 | sudo -S rm /home/jenkins/pytest/Dockerfile'
+        sh 'echo 12345 | sudo -S rm /home/jenkins/pytest/README.txt'
+        sh 'echo 12345 | sudo -S rm /home/jenkins/pytest/requirements.txt'
+        sh 'echo 12345 | sudo -S rm /home/jenkins/pytest/hits/app.py'
+        sh 'echo 12345 | sudo -S rmdir /home/jenkins/pytest/hits'
         sh 'echo 12345 | sudo -S rmdir /home/jenkins/pytest'
        }
      }
