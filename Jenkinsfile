@@ -17,7 +17,6 @@ pipeline {
     stage('Docker build'){
       steps {
       sh 'cd /home/jenkins/pytest'
-        sh 'docker login'
         sh 'echo 12345 | sudo -S docker build -t gidra39/jnkst .'
        }
      }
