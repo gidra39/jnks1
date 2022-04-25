@@ -25,6 +25,10 @@ pipeline {
         sh 'docker image push gidra39/jnkst'
        }
      }
-    
+    stage('Cleanup'){
+      steps {
+        sh 'echo 12345 | sudo -S rmdir /home/jenkins/pytest'
+       }
+     }
   }
 }
