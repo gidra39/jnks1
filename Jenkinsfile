@@ -2,12 +2,12 @@ pipeline {
   agent {
           label 'ubuntu-s'
          }
-  node {
-        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '12345', var: 'SECRET']]]) {
-        echo "12345";
-    }
-}
   stages {
+    stage('Password encryption'){
+      wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '12345', var: 'SECRET']]]) {
+      echo "12345";
+      }
+    }
     stage('Docker version'){
       steps {
       sh 'echo $USER'
