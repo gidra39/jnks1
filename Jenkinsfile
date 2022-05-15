@@ -2,6 +2,11 @@ pipeline {
   agent {
           label 'ubuntu-s'
          }
+  node {
+        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '12345', var: 'SECRET']]]) {
+        echo "12345";
+    }
+}
   stages {
     stage('Docker version'){
       steps {
@@ -12,17 +17,6 @@ pipeline {
       stage('Git cloning'){
       steps {
       sh 'git clone https://github.com/gidra39/jnks2.git /home/jenkins/pytest'
-       }
-     }
-    stage('Docker build'){
-      steps {
-      sh 'cd /home/jenkins/pytest'
-        sh 'echo 12345 | sudo -S docker build -t gidra39/jnkst .'
-       }
-     }
-     stage('Docker image push'){
-      steps {
-        sh 'echo 12345 | sudo -S docker image push gidra39/jnkst'
        }
      }
     stage('Cleanup'){
