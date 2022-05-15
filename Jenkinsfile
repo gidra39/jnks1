@@ -4,6 +4,7 @@ pipeline {
          }
   stages {
     stage('Password encryption'){
+      steps{
       wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '12345', var: 'SECRET']]]) {
       echo "12345";
       }
